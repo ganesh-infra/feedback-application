@@ -18,16 +18,32 @@
     <name>spring-feedback-app</name>
     <description>Feedback App with MySQL</description>
 
+    <!-- ✅ IMPORTANT: Change packaging -->
+    <packaging>war</packaging>
+
     <properties>
         <java.version>17</java.version>
     </properties>
 
     <dependencies>
 
-        <!-- Web -->
+        <!-- Web (exclude embedded Tomcat) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- External Tomcat (provided) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Thymeleaf -->
@@ -49,7 +65,7 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Optional: Lombok (reduces boilerplate) -->
+        <!-- Lombok (optional) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -66,22 +82,17 @@
     </dependencies>
 
     <build>
+        <finalName>spring-feedback-app</finalName>
+
         <plugins>
 
-            <!-- Spring Boot Plugin (IMPORTANT for executable JAR) -->
+            <!-- Spring Boot Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <mainClass>com.example.springfeedbackapp.SpringFeedbackAppApplication</mainClass>
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
         </plugins>
