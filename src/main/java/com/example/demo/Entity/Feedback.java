@@ -1,6 +1,8 @@
 package com.example.demo.Entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 
 @Entity
 public class Feedback {
