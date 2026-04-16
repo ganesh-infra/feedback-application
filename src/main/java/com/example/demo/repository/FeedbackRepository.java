@@ -1,9 +1,10 @@
-package com.example.demo.FeedbackRepository;
+package com.example.demo.repository;
 
 
 
-import com.example.demo.Entity.Feedback;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.demo.entity.Feedback;
 
 public interface FeedbackRepository extends JpaRepository<Feedback, Long> {
 }
