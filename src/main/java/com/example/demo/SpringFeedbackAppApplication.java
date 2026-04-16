@@ -7,7 +7,6 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.example.demo")
 public class SpringFeedbackAppApplication extends SpringBootServletInitializer {
 	
 	  @Override
