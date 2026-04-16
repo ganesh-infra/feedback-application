@@ -31,12 +31,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- External Tomcat (provided) -->
@@ -80,21 +74,27 @@
 
     </dependencies>
 
-    <build>
-        <finalName>spring-feedback-app</finalName>
+   <build>
+    <finalName>spring-feedback-app</finalName>
 
-        <plugins>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <configuration>
+                <mainClass>com.example.demo.SpringFeedbackAppApplication</mainClass>
+            </configuration>
 
-            <!-- Spring Boot Plugin -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.example.springfeedbackapp.SpringFeedbackAppApplication</mainClass>
-                </configuration>
-            </plugin>
-
-        </plugins>
-    </build>
+            <!-- ADD THIS -->
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>repackage</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
+</build>
 
 </project>
